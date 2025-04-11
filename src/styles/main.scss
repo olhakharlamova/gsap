@@ -1,29 +1,207 @@
-@font-face {
-    font-family: "Obviously Black";
-    src: url("../fonts/Obviously-Black.otf") format("opentype");
-  }
-  
-  body {
-    font-family: "Obviously Black", sans-serif;
-  }
-  
-  .hero-test {
-    height: 300px;
-    background-image: url("../images/sass-test.jpg");
-    background-size: cover;
-    background-position: center;
-    margin: 2rem;
-    border-radius: 12px;
-  }
+$image-path: "../images/";
+$max-width: 1170px;
+$avatar-size: 70px;
 
-    #app {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      justify-content: center;
-    }
-  .ws_square {
-    height: 100px;
-    width:100px;
-    background-color: #3498db;  
-    position: relative;         // Required for transform animations
-  }
+
+@mixin font($weight, $size, $line) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line;
+}
+
+@font-face {
+  font-family: "Obviously Black";
+  src: url("../fonts/Obviously-Black.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Cabin";
+  src: url("../fonts/Cabin.ttf") format("truetype");
+  font-weight: 400 700; // Defines the weight range from 100 to 900
+  font-style: normal; // Regular style (you can also include italics with variable fonts)
+}
+
+body {
+  font-family: "Cabin", Arial, sans-serif;
+  text-wrap: balance;
+  font-weight: 400; // Regular weight (normal)
+}
+
+strong {
+  font-weight: 700;
+}
+
+.ws_wrapper {
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+header {
+  background: #f9f9f9;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.ws_avatar,
+.ws_achievment ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.ws_avatar img {
+  max-width: $avatar-size;
+  max-height: $avatar-size;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ws_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  margin: 0 auto;
+
+  background: #f9f9f9;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.ws_hero {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+h1 {
+  @include font(700, 3rem, 3.5rem);
+  padding-bottom: 2rem;
+}
+
+h2 {
+  @include font(500, 2.5rem, 2.5rem);
+  padding-bottom: 1rem;
+}
+
+
+p {
+  @include font(400, 1.2rem, 1.9rem);
+  padding-bottom: 1rem;
+  color: #575757;
+}
+
+
+
+.ws_button {
+  background-color: white;
+  border-color: rgb(0, 128, 0);
+  border-style: solid;
+  border-width: 1px;
+  color: rgb(0, 128, 0);
+  padding: .5rem 2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: opacity 0.3s, color 1s;
+  text-decoration: none;
+  margin: 1rem 0;
+  display: inline-block;
+}
+
+.ws_button:hover {
+  background-color: rgb(211, 236, 211);
+  color: rgb(0, 128, 0);
+}
+
+.ws_button:active {
+  opacity: 0.7;
+}
+
+
+
+
+
+
+
+.ws_achievment__certifiate,
+.ws_achievment__top-rated {
+  position: relative;
+  padding-left: 30px;
+  list-style-type: none;
+}
+
+.ws_achievment__certifiate::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: url('../images/certificate.png') center center / contain no-repeat;
+}
+
+.ws_achievment__top-rated::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: url('#{$image-path}top-rated.png') center center / contain no-repeat;
+}
+
+/* Optionally, to handle hover or size adjustments */
+.ws_achievment__certifiate:hover::before {
+  width: 25px;
+  /* Increase icon size on hover */
+  height: 25px;
+  /* Increase icon size on hover */
+}
+
+
+
+
+
+
+
+
+
+
+.hero-test {
+  height: 300px;
+  background-image: url("../images/sass-test.jpg");
+  background-size: cover;
+  background-position: center;
+  margin: 2rem;
+  border-radius: 12px;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  background: rgb(229, 229, 229);
+  padding: 2rem 0;
+}
+
+.ws_app__el {
+  background-color: #3498db;
+  height: 100px;
+  width: 100px;
+}
+
+.ws_apps>article {
+  text-align: center;
+  padding-bottom: 3rem;
+}
+
+.ws_square {
+  width: 100px;
+  height: 100px;
+  background: green;
+}

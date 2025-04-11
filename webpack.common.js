@@ -25,6 +25,13 @@ module.exports = {
         ],
       },
       {
+        test: /\.css$/i, // Add rule for CSS files
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader", // Handle CSS imports
+        ],
+      },
+      {
         test: /\.(png|jpe?g|gif|svg|webp)$/i,
         type: "asset/resource",
         generator: {
@@ -56,6 +63,6 @@ module.exports = {
   ],
 
   resolve: {
-    extensions: [".js", ".scss"],
+    extensions: [".js", ".scss", ".css"], // Ensure .css is handled
   },
 };
