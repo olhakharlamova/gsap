@@ -185,14 +185,21 @@ p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  background: rgb(229, 229, 229);
+  background: #e5e5e5;
   padding: 2rem 0;
+  grid-auto-flow: row;
+  grid-auto-rows: minmax(300px, 1fr);
+  align-items: center;
+  justify-items: center;
 }
 
 .ws_app__el {
   background-color: #3498db;
   height: 100px;
   width: 100px;
+  max-width: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
 }
 
 .ws_apps>article {

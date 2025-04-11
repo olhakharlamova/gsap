@@ -35,14 +35,14 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg|webp)$/i,
         type: "asset/resource",
         generator: {
-          filename: "assets/images/[name][ext]",
+          filename: "assets/images/[name][ext]", // Save images to dist/assets/images/
         },
       },
       {
         test: /\.(woff2?|eot|ttf|otf)$/i,
         type: "asset/resource",
         generator: {
-          filename: "assets/fonts/[name][ext]",
+          filename: "assets/fonts/[name][ext]", // Save fonts to dist/assets/fonts/
         },
       },
     ],
@@ -50,19 +50,22 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/index.html", // We'll create this next
+      template: "src/index.html", // Template file for HTML
       filename: "index.html",
       inject: "body",
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: "[name].css", // Output CSS files with the same name as entry points
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: "static", to: "" }],
+      patterns: [
+        { from: "src/images", to: "assets/images" }, // Copy images from src/images to dist/assets/images
+        { from: "static", to: "" }, // Copy static assets to the root of dist
+      ],
     }),
   ],
 
   resolve: {
-    extensions: [".js", ".scss", ".css"], // Ensure .css is handled
+    extensions: [".js", ".scss", ".css"], // Ensure .css, .js, .scss extensions are handled
   },
 };
