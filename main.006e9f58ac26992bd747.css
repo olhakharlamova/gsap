@@ -1,3 +1,0 @@
-@font-face{font-family:"Obviously Black";src:url(assets/fonts/Obviously-Black.otf) format("opentype")}body{font-family:"Obviously Black",sans-serif}.hero-test{height:300px;background-image:url(assets/images/sass-test.jpg);background-size:cover;background-position:center;margin:2rem;border-radius:12px}#app{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));justify-content:center}.ws_square{height:100px;width:100px;background-color:#3498db;position:relative}
-
-/*# sourceMappingURL=main.006e9f58ac26992bd747.css.map*/
