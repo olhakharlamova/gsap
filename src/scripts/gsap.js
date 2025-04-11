@@ -1,14 +1,24 @@
-// src/scripts/gsap.js
+// src/scripts/index.js
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import gsap from "gsap"; // Import GSAP
+gsap.registerPlugin(ScrollTrigger);
 
-// Animate the element with ID "ws_square"
-// gsap.from(".ws_square", {
-//   duration: 2,           // Animation duration (2 seconds)
-//   x: 300,                // Move 300px to the right along the X-axis
-//   rotation: 360,         // Rotate 360 degrees
-//   scale: 1.5,
-//   repeat: -1,            // Scale up by 1.5 times
-//   ease: "back",
-//   yoyo: true   // Smooth easing
-// });
+gsap.utils.toArray(".ws_app__el").forEach((el) => {
+  gsap.fromTo(
+    el,
+    { opacity: 0, y: 50, filter: "blur(8px)" },
+    {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    }
+  );
+});

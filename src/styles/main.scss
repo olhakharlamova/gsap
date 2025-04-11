@@ -195,11 +195,26 @@ p {
 
 .ws_app__el {
   background-color: #3498db;
-  height: 100px;
-  width: 100px;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  /* or set a % or fixed max-width */
+  aspect-ratio: 1 / 1;
+  /* maintains 1:1 (square) */
+  max-width: 200px;
   box-sizing: border-box;
+}
+
+
+.ws_app__el img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(100%);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.ws_app__el:hover img {
+  transform: scale(1.1);
+  filter: grayscale(0%);
 }
 
 .ws_apps>article {
